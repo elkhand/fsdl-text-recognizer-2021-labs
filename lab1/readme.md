@@ -126,3 +126,10 @@ And watch the model fail to achieve high accuracy due to too few parameters :)
 
 - Try `training/run_experiment.py` with different MLP hyper-parameters (e.g. `--fc1=128 --fc2=64`).
 - Try editing the MLP architecture in `text_recognizers/models/mlp.py`
+
+## Extra commands
+```sh
+python3 training/run_experiment.py --model_class=MLP --data_class=MNIST --max_epochs=5 --gpus=0,1 --fc1=4 --fc2=8 --accelerator=ddp
+
+watch -n1 nvidia-smi
+```
