@@ -36,6 +36,7 @@ def _setup_parser():
     parser.add_argument("--data_class", type=str, default="MNIST")
     parser.add_argument("--model_class", type=str, default="MLP")
     parser.add_argument("--load_checkpoint", type=str, default=None)
+    # parser.add_argument("--num_workers", type=int, default=12)
 
     # Get the data and model classes, so that we can add their specific arguments
     temp_args, _ = parser.parse_known_args()

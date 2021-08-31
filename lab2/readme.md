@@ -64,6 +64,9 @@ We can now train a CNN for the same purpose:
 
 ```sh
 python3 training/run_experiment.py --model_class=CNN --data_class=MNIST --max_epochs=5 --gpus=1
+
+python3 training/run_experiment.py --model_class=CNN --data_class=MNIST --max_epochs=5 --gpus=0,1 --accelerator=ddp --num_workers=12
+
 ```
 
 ## Doing the same for EMNIST
@@ -72,6 +75,9 @@ We can do the same on the larger EMNIST dataset:
 
 ```sh
 python3 training/run_experiment.py --model_class=CNN --data_class=EMNIST --max_epochs=5 --gpus=1
+
+python3 training/run_experiment.py --model_class=CNN --data_class=EMNIST --max_epochs=5 --gpus=0,1 --accelerator=ddp --num_workers=12
+
 ```
 
 Training the single epoch will take about 2 minutes (that's why we only do one epoch in this lab :)).
@@ -87,6 +93,10 @@ https://pytorch-lightning.readthedocs.io/en/stable/debugging.html#make-model-ove
 
 ```sh
 python3 training/run_experiment.py --model_class=CNN --data_class=EMNIST --max_epochs=50 --gpus=1 --overfit_batches=2
+
+python3 training/run_experiment.py --model_class=CNN --data_class=EMNIST --max_epochs=5 --gpus=0,1 --overfit_batches=2 --accelerator=ddp --num_workers=12
+
+
 ```
 
 ## Speeding up training
@@ -95,6 +105,10 @@ One way we can make sure that our GPU stays consistently highly utilized is to d
 
 ```sh
 python3 training/run_experiment.py --model_class=CNN --data_class=EMNIST --max_epochs=5 --gpus=1 --num_workers=4
+
+python3 training/run_experiment.py --model_class=CNN --data_class=EMNIST --max_epochs=5 --gpus=0,1 --overfit_batches=2 --accelerator=ddp --num_workers=12
+
+
 ```
 
 ## Making a synthetic dataset of EMNIST Lines
@@ -118,3 +132,9 @@ Some other things to try:
 - Remove `MaxPool2D`, perhaps using a strided convolution instead.
 - Add some command-line arguments to make trying things a quicker process.
 - A good argument to add would be for the number of `ConvBlock`s to run the input through.
+
+## Extra command:
+
+```sh
+python3 training/run_experiment.py --model_class=CNN --data_class=MNIST --max_epochs=5 --gpus=0,1 --accelerator=ddp --num_workers=12
+```
