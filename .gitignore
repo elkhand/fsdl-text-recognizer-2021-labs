@@ -46,3 +46,5 @@ logs
 notebooks/lightning_logs
 lightning_logs/
 lab9/requirements.txt
+
+.idea/

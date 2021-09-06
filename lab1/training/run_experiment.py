@@ -30,6 +30,7 @@ def _setup_parser():
     # Add Trainer specific arguments, such as --max_epochs, --gpus, --precision
     trainer_parser = pl.Trainer.add_argparse_args(parser)
     trainer_parser._action_groups[1].title = "Trainer Args"  # pylint: disable=protected-access
+
     parser = argparse.ArgumentParser(add_help=False, parents=[trainer_parser])
 
     # Basic arguments
